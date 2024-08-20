@@ -30,7 +30,8 @@ public class MongoGradeDataBase implements GradeDataBase {
     private static final int SUCCESS_CODE = 200;
 
     public static String getAPIToken () {
-        return System.getenv("getAPIToken");
+        System.out.println(System.getenv("api_token"));
+        return System.getenv("api_token");
     }
 
 
@@ -45,7 +46,7 @@ public class MongoGradeDataBase implements GradeDataBase {
                 .build();
         final Request request = new Request.Builder()
                 .url(String.format("%s/grade?course=%s&username=", API_URL, course, username))
-                .addHeader("api_token", getAPIToken())
+                .addHeader("token", getAPIToken())
                 .addHeader(CONTENT_TYPE, APPLICATION_JSON)
                 .build();
 
