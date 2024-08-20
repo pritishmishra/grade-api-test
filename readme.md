@@ -138,3 +138,4 @@ code base after to see what parts align with Clean Architecture and which parts 
 ## Tips
 1. Use this API `info` if you want to access all the information you can access (your team and all your teammates' grades).
 2. All responses are in `json` format. 
+3. We are using a very simple authedication method, by passing `username` and `password` in the request headers. When you use some real-world APIs, you will see some more sophisticated authedication approches.
