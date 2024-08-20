@@ -1,33 +1,66 @@
 package app;
 
-import api.GradeDB;
-import api.MongoGradeDB;
-import use_case.*;
+import api.GradeDataBase;
+import api.MongoGradeDataBase;
+import usecase.FormTeamUseCase;
+import usecase.GetAverageGradeUseCase;
+import usecase.GetGradeUseCase;
+import usecase.JoinTeamUseCase;
+import usecase.LeaveTeamUseCase;
+import usecase.LogGradeUseCase;
+
+/**
+ * Config class to provide use cases with the necessary dependencies.
+ */
 
 public class Config {
-    private final GradeDB gradeDB = new MongoGradeDB();
+    private final GradeDataBase gradeDataBase = new MongoGradeDataBase();
 
+    /**
+     * Get the GetGradeUseCase object.
+     * @return GetGradeUseCase object.
+     */
     public GetGradeUseCase getGradeUseCase() {
-        return new GetGradeUseCase(gradeDB);
+        return new GetGradeUseCase(gradeDataBase);
     }
 
+    /**
+     * Get the LogGradeUseCase object.
+     * @return LogGradeUseCase object.
+     */
     public LogGradeUseCase logGradeUseCase() {
-        return new LogGradeUseCase(gradeDB);
+        return new LogGradeUseCase(gradeDataBase);
     }
 
-    public FormTeamUseCase formTeamUseCase () {
-        return new FormTeamUseCase(gradeDB);
+    /**
+     * Get the FormTeamUseCase object.
+     * @return FormTeamUseCase object.
+     */
+    public FormTeamUseCase formTeamUseCase() {
+        return new FormTeamUseCase(gradeDataBase);
     }
 
-    public JoinTeamUseCase joinTeamUseCase () {
-        return new JoinTeamUseCase(gradeDB);
+    /**
+     * Get the JoinTeamUseCase object.
+     * @return JoinTeamUseCase object.
+     */
+    public JoinTeamUseCase joinTeamUseCase() {
+        return new JoinTeamUseCase(gradeDataBase);
     }
 
-    public LeaveTeamUseCase leaveTeamUseCase () {
-        return new LeaveTeamUseCase(gradeDB);
+    /**
+     * Get the LeaveTeamUseCase object.
+     * @return LeaveTeamUseCase object.
+     */
+    public LeaveTeamUseCase leaveTeamUseCase() {
+        return new LeaveTeamUseCase(gradeDataBase);
     }
 
-    public GetAverageGradeUseCase getAverageGradeUseCase () {
-        return new GetAverageGradeUseCase(gradeDB);
+    /**
+     * Get the GetAverageGradeUseCase object.
+     * @return GetAverageGradeUseCase object.
+     */
+    public GetAverageGradeUseCase getAverageGradeUseCase() {
+        return new GetAverageGradeUseCase(gradeDataBase);
     }
 }

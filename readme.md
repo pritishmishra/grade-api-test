@@ -62,7 +62,7 @@ field.
     - Note: If you don't see this Run Configuration listed:
       - create a new Run Configuration of type `Application` (use the +
       in the top left corner of the window).
-      - where it says "Main class", type `app.gui.GUI`.
+      - where it says "Main class", type `app.gui.Application`.
 
 10. In that field, type `API_TOKEN=YOUR_TOKEN`, with YOUR_TOKEN replaced with your
 actual API Token which you saved in `username.txt`.
