@@ -100,8 +100,7 @@ public class Application {
         final JPanel defaultCard = new JPanel();
         defaultCard.setLayout(new BorderLayout());
 
-        final JLabel infoLabel = new JLabel(String.format("Welcome to the Grade APP. \n Your username: %s, your password: %s",
-                MongoGradeDataBase.getUsername(null), MongoGradeDataBase.getPassword()));
+        final JLabel infoLabel = new JLabel(String.format("Welcome to the Grade APP. \n Your api_token is:%s", MongoGradeDataBase.getAPIToken()));
 
         defaultCard.add(infoLabel, BorderLayout.CENTER);
 

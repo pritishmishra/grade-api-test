@@ -20,8 +20,6 @@ import okhttp3.Response;
 public class MongoGradeDataBase implements GradeDataBase {
     // Defining some constants.
     private static final String API_URL = "http://vm003.teach.cs.toronto.edu:20112";
-    private static final String USERNAME = "username";
-    private static final String PASSWORD = "password";
     private static final String CONTENT_TYPE = "Content-Type";
     private static final String APPLICATION_JSON = "application/json";
     private static final String STATUS_CODE = "status_code";
@@ -31,22 +29,10 @@ public class MongoGradeDataBase implements GradeDataBase {
     // load getPassword() from env variable.
     private static final int SUCCESS_CODE = 200;
 
-    public static String getPassword() {
-        return System.getenv("password");
+    public static String getAPIToken () {
+        return System.getenv("getAPIToken");
     }
 
-    /**
-     * Return the username for API calls.
-     * @param username the username from the input field.
-     * @return the username from the input field if it is not empty, otherwise return the default username.
-     */
-    public static String getUsername(String username) {
-        String result = username;
-        if (username == null || username.isEmpty()) {
-            result = System.getenv(USERNAME);
-        }
-        return result;
-    }
 
     @Override
     public Grade getGrade(String username, String course) {
@@ -59,8 +45,8 @@ public class MongoGradeDataBase implements GradeDataBase {
                 .build();
         final Request request = new Request.Builder()
                 .url(String.format("%s/grade?course=%s", API_URL, course))
-                .addHeader(PASSWORD, getPassword())
-                .addHeader(USERNAME, getUsername(username))
+                .addHeader("api_token", getAPIToken())
+                .addHeader("username", username)
                 .addHeader(CONTENT_TYPE, APPLICATION_JSON)
                 .build();
 
@@ -72,7 +58,7 @@ public class MongoGradeDataBase implements GradeDataBase {
             if (responseBody.getInt(STATUS_CODE) == SUCCESS_CODE) {
                 final JSONObject grade = responseBody.getJSONObject(GRADE);
                 return Grade.builder()
-                        .username(grade.getString(USERNAME))
+                        .username(grade.getString("username"))
                         .course(grade.getString("course"))
                         .grade(grade.getInt(GRADE))
                         .build();
@@ -97,8 +83,8 @@ public class MongoGradeDataBase implements GradeDataBase {
                 .build();
         final Request request = new Request.Builder()
                 .url(String.format("%s/grades", API_URL))
-                .addHeader(PASSWORD, getPassword())
-                .addHeader(USERNAME, getUsername(username))
+                .addHeader("api_token", getAPIToken())
+                .addHeader("username", username)
                 .addHeader(CONTENT_TYPE, APPLICATION_JSON)
                 .build();
 
@@ -113,7 +99,7 @@ public class MongoGradeDataBase implements GradeDataBase {
                 for (int i = 0; i < grades.length(); i++) {
                     final JSONObject grade = grades.getJSONObject(i);
                     result[i] = Grade.builder()
-                            .username(grade.getString(USERNAME))
+                            .username(grade.getString("username"))
                             .course(grade.getString("course"))
                             .grade(grade.getInt(GRADE))
                             .build();
@@ -141,8 +127,7 @@ public class MongoGradeDataBase implements GradeDataBase {
         final Request request = new Request.Builder()
                 .url(String.format("%s/grade", API_URL))
                 .method("POST", body)
-                .addHeader(PASSWORD, getPassword())
-                .addHeader(USERNAME, getUsername(null))
+                .addHeader("api_token", getAPIToken())
                 // TODO: leave it blank on purpose and ask students to fix it?
                 .addHeader(CONTENT_TYPE, APPLICATION_JSON)
                 .build();
@@ -174,8 +159,7 @@ public class MongoGradeDataBase implements GradeDataBase {
         final Request request = new Request.Builder()
                 .url(String.format("%s/team", API_URL))
                 .method("POST", body)
-                .addHeader(PASSWORD, getPassword())
-                .addHeader(USERNAME, getUsername(null))
+                .addHeader("api_token", getAPIToken())
                 .addHeader(CONTENT_TYPE, APPLICATION_JSON)
                 .build();
 
@@ -216,8 +200,7 @@ public class MongoGradeDataBase implements GradeDataBase {
         final Request request = new Request.Builder()
                 .url(String.format("%s/team", API_URL))
                 .method("PUT", body)
-                .addHeader(PASSWORD, getPassword())
-                .addHeader(USERNAME, getUsername(null))
+                .addHeader("api_token", getAPIToken())
                 .addHeader(CONTENT_TYPE, APPLICATION_JSON)
                 .build();
 
@@ -247,8 +230,7 @@ public class MongoGradeDataBase implements GradeDataBase {
         final Request request = new Request.Builder()
                 .url(String.format("%s/leaveTeam", API_URL))
                 .method("PUT", body)
-                .addHeader(PASSWORD, getPassword())
-                .addHeader(USERNAME, getUsername(null))
+                .addHeader("api_token", getAPIToken())
                 .addHeader(CONTENT_TYPE, APPLICATION_JSON)
                 .build();
 

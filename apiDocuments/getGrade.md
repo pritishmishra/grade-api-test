@@ -11,7 +11,6 @@ Get a grade for a course for a specific UTORid. One can only access grades for t
 **Required Request Parameters**
 ```json
 {
-    "utorid": "The utorid",
     "course": "The course code"
 }
 ```
