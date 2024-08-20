@@ -96,18 +96,18 @@ public class GUI {
         JPanel getGradeCard = new JPanel();
         getGradeCard.setLayout(new GridLayout(3, 2));
 
-        JTextField utoridField = new JTextField(20);
+        JTextField usernameField = new JTextField(20);
         JTextField courseField = new JTextField(20);
         JButton getButton = new JButton("Get");
 
         JLabel resultLabel = new JLabel();
 
         getButton.addActionListener(e -> {
-            String utorid = utoridField.getText();
+            String username = usernameField.getText();
             String course = courseField.getText();
 
             try{
-                Grade grade = getGradeUseCase.getGrade(utorid, course);
+                Grade grade = getGradeUseCase.getGrade(username, course);
                 JOptionPane.showMessageDialog(jFrame, String.format("Grade: %d", grade.getGrade()));
             }
             catch (Exception ex){
@@ -115,8 +115,8 @@ public class GUI {
             }
         });
 
-        getGradeCard.add(new JLabel("UTORid:"));
-        getGradeCard.add(utoridField);
+        getGradeCard.add(new JLabel("Username (leave it blank if you are checking you own grade):"));
+        getGradeCard.add(usernameField);
         getGradeCard.add(new JLabel("Course:"));
         getGradeCard.add(courseField);
         getGradeCard.add(getButton);

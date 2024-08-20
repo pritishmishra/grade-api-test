@@ -3,12 +3,12 @@ package entity;
 public class Grade {
 
     // Refer to the API documentation for the meaning of these fields.
-    private String utorid;
+    private String username;
     private String course;
     private int grade;
 
     public Grade(String utorid, String course, int grade) {
-        this.utorid = utorid;
+        this.username = utorid;
         this.course = course;
         this.grade = grade;
     }
@@ -18,15 +18,15 @@ public class Grade {
     }
 
     public static class GradeBuilder {
-        private String utorid;
+        private String username;
         private String course;
         private int grade;
 
         GradeBuilder() {
         }
 
-        public GradeBuilder utorid(String utorid) {
-            this.utorid = utorid;
+        public GradeBuilder username(String username) {
+            this.username = username;
             return this;
         }
 
@@ -41,21 +41,21 @@ public class Grade {
         }
 
         public Grade build() {
-            return new Grade(utorid, course, grade);
+            return new Grade(username, course, grade);
         }
     }
 
     @Override
     public String toString() {
         return "Grade{" +
-                "utorid='" + utorid + '\'' +
+                "username='" + username + '\'' +
                 ", course='" + course + '\'' +
                 ", grade=" + grade +
                 '}';
     }
 
-    public String getUtorid() {
-        return utorid;
+    public String getUsername() {
+        return username;
     }
 
     public String getCourse() {
