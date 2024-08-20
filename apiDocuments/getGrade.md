@@ -6,7 +6,7 @@ Get a grade for a course for a specific UTORid. One can only access grades for t
 
 **Method** : `GET`
 
-**Auth required** : Required in header `Authorization`.
+**Auth required** : Required in header `username` and `Authorization`.
 
 **Required Request Parameters**
 ```json

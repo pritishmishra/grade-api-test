@@ -52,7 +52,7 @@ next step, you may need to reload the Maven project. You can do this by right-cl
 resolve any errors.
 
 8. Try running the main application (`src/main/java/app/gui/Application`). When you start the program,
-you will see that it says your password is null (since we didn't set it yet).
+you will see that it says `your password is null` (since we didn't set it yet).
 Stop the program and go to `Run -> Edit Configurations...`.
 
 9. Open the Run Configuration for `Application` and find the `Environment Variables:`
@@ -134,3 +134,7 @@ make the code better? How easy would it be to implement new functionality into t
 In lecture this week, we will finish our initial tour of Clean Architecture with a full
 example designed with Clean Architecture in mind. You might find it useful to revisit this
 code base after to see what parts align with Clean Architecture and which parts do not.
+
+## Tips
+1. Use this API `info` if you want to access all the information you can access (your team and all your teammates' grades).
+2. All responses are in `json` format. 
