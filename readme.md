@@ -10,41 +10,39 @@ be some time to do this as your TA helps everyone get into teams.**
 
 1. As with the previous lab activities, start by making a fork of this repo and cloning it.
 
-## Task 1: Your API Token
+## Task 1: Your Password (as your API Authorization Key)
 
-In order to use the Grade API, you will need to use an API Token.
-To obtain your token, we are going to make a simple request to the Grade API.
+In order to use the Grade API, you will need to sign up an account, and use the Password as the Token (we will use Password and API Token exchangably)..
+To sign up an account, we are going to make a simple request to the Grade API.
 
 1. Go to https://hoppscotch.io. This is a tool like Postman, which can be used to quickly interact with APIs.
-2. Beside the word GET, replace https://echo.hoppscotch.io/ with https://grade-logging-api.chenpan.ca/signUp.
+2. Beside the word GET, replace https://echo.hoppscotch.io/ with http://vm003.teach.cs.toronto.edu:20112/signUp.
 
 Next, we need to specify the username which we want to sign up with. To do this, we add a parameter.
 
-3. In the Parameters tab, choose `+ Add new` and set the parameter name to `utorid`.
-4. For its value, choose whatever username you want to use. Make note of the name you choose, as you'll use it
-during the lab. (Don't worry, you can repeat this process with a new username if you need to later!)
-5. Press the `Send` button to make the request. You may receive an error that the request didn't go through. Scroll down and
-select `proxy` as the middleware and press `Send` again. You should now see the result of the request.
-6. If the username had been used before, you will see a response indicating that. Choose a new username and send the
-request again.
+3. In the Parameters tab, choose `+ Add new` and set the parameter name to `username`.
+4. For its value, choose whatever username you want to use. Make note of the name you choose, as you'll use it during the lab. (Don't worry, you can repeat this process with a new username if you need to later!)
+5. Press the `Send` button to make the request. You may receive an error that the request didn't go through. Scroll down and select `proxy` as the middleware and press `Send` again. You should now see the result of the request.
+6. If the username had been used before, you will see a response indicating that. Choose a new username and send the request again.
+7. When you successfully sign up an account, you will get a field called `environment_variables`, which you should copy and paste into Intellij's environment variables, for the rest of the activity.
 
 You can also refer to `apiDocuments/signUp.md` in this repo for the documentation of this API request.
 
 ***
 
-Alternative to the above: Enter `https://grade-logging-api.chenpan.ca/signUp?utorid=USERNAME` in any web browser
+Alternative to the above: Enter `http://vm003.teach.cs.toronto.edu:20112/signUp?username=USERNAME` in any web browser
 with `USERNAME` replaced with the username you want to use.
 
 ***
 
 7. Create a new file called `username.txt` in the root directory of your project and record your
-   username and API token in that file. This file is indicated in the `.gitignore` for your project, so
+   username and password in that file. This file is indicated in the `.gitignore` for your project, so
    its name will appear yellow in IntelliJ to indicate that git will ignore the file (it won't be version
    controlled). This can be useful to ensure that you don't accidentally share private information
-   (like personal API tokens) or configurations specific to your local environment when working on a
+   (like personal passwords) or configurations specific to your local environment when working on a
    team project.
 
-Now that you have your API token, the last step is to get your program to use it. To do so, we
+Now that you have your password, the last step is to get your program to use it. To do so, we
 are going to set an environment variable in the run configuration.
 
 Note: at this point you should be able to run the program, but it is possible that the Maven
@@ -53,21 +51,21 @@ next step, you may need to reload the Maven project. You can do this by right-cl
 `pom.xml` file in your project. In the context menu, choose `Maven -> reload project`. This should
 resolve any errors.
 
-8. Try running the main application (`src/main/java/app/gui/GUI`). When you start the program,
-you will see that it says your API Token is null (since we didn't set it yet).
+8. Try running the main application (`src/main/java/app/gui/Application`). When you start the program,
+you will see that it says your password is null (since we didn't set it yet).
 Stop the program and go to `Run -> Edit Configurations...`.
 
-9. Open the Run Configuration for `GUI` and find the `Environment Variables:`
+9. Open the Run Configuration for `Application` and find the `Environment Variables:`
 field.
     - Note: If you don't see this Run Configuration listed:
       - create a new Run Configuration of type `Application` (use the +
       in the top left corner of the window).
       - where it says "Main class", type `app.gui.Application`.
 
-10. In that field, type `API_TOKEN=YOUR_TOKEN`, with YOUR_TOKEN replaced with your
-actual API Token which you saved in `username.txt`.
+10. In that field, type the text you copied from `environment_variables` when you sign up an account. Your username and password should also be variable in `username.txt`.
+Example: `username=chenpan;password=6SgDAt8XpnQYTDPt4vHcPCCKJ2ppLg1C`.
 11. Click `Apply` and then `OK`.
-12. Now, rerun the program and you should see your API token displayed.
+12. Now, rerun the program and you should see your password displayed.
 13. Enter a valid grade for `207` in the `Log a Grade` menu. You should see a popup
 telling you that your grade was successfully entered. You can then check your grade
 by using the `Get a Grade` menu and specifying your username and `207` for the course.
@@ -97,7 +95,7 @@ Now that you are all on the team, there is one coding task for your team to work
 
 Note: If your team finds it convenient to work on parts of this lab on a common machine,
 you can create different run configurations (copy an existing one) which each use a different
-`API_TOKEN` environment variable. Then you can run multiple instances of the program and
+`password` environment variable. Then you can run multiple instances of the program and
 enter requests as different users.
 
 ***
