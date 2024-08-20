@@ -27,6 +27,14 @@ public interface GradeDataBase {
     Grade logGrade(String course, int grade) throws JSONException;
 
     /**
+     * A method that returns the grades of a student in all courses.
+     * @param username is the username of the student.
+     * @return the grades of the student in all courses.
+     * @throws JSONException if an error occurs.
+     */
+    Grade[] getGrades(String username) throws JSONException;
+
+    /**
      * A method that forms a team with the given name.
      * @param name is the name of the team.
      * @return the team that was formed.

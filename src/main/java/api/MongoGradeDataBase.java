@@ -88,6 +88,49 @@ public class MongoGradeDataBase implements GradeDataBase {
     }
 
     @Override
+    public Grade[] getGrades(String username) {
+
+        // Build the request to get the grade.
+        // Note: The API requires the username to be passed as a header.
+        // Note: The API requires the course to be passed as a query parameter.
+        // TODO: what is the difference between a header and parameter?
+        final OkHttpClient client = new OkHttpClient().newBuilder()
+                .build();
+        final Request request = new Request.Builder()
+                .url(String.format("%s/grades", API_URL))
+                .addHeader(AUTHORIZATION, API_TOKEN)
+                .addHeader(USERNAME, getUsername(username))
+                .addHeader(CONTENT_TYPE, APPLICATION_JSON)
+                .build();
+
+        // Hint: look at the API documentation to understand what the response looks like.
+        try {
+            final Response response = client.newCall(request).execute();
+            final JSONObject responseBody = new JSONObject(response.body().string());
+
+            if (responseBody.getInt(STATUS_CODE) == SUCCESS_CODE) {
+                final JSONArray grades = responseBody.getJSONArray("grades");
+                final Grade[] result = new Grade[grades.length()];
+                for (int i = 0; i < grades.length(); i++) {
+                    final JSONObject grade = grades.getJSONObject(i);
+                    result[i] = Grade.builder()
+                            .username(grade.getString(USERNAME))
+                            .course(grade.getString("course"))
+                            .grade(grade.getInt(GRADE))
+                            .build();
+                }
+                return result;
+            }
+            else {
+                throw new RuntimeException(responseBody.getString(MESSAGE));
+            }
+        }
+        catch (IOException | JSONException event) {
+            throw new RuntimeException(event);
+        }
+    }
+
+    @Override
     public Grade logGrade(String course, int grade) throws JSONException {
         final OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
