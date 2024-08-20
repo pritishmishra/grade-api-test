@@ -30,8 +30,7 @@ public class MongoGradeDataBase implements GradeDataBase {
     private static final int SUCCESS_CODE = 200;
 
     public static String getAPIToken () {
-        System.out.println(System.getenv("api_token"));
-        return System.getenv("api_token");
+        return System.getenv("token");
     }
 
 
@@ -83,7 +82,7 @@ public class MongoGradeDataBase implements GradeDataBase {
                 .build();
         final Request request = new Request.Builder()
                 .url(String.format("%s/grades?username=%s", API_URL, username))
-                .addHeader("api_token", getAPIToken())
+                .addHeader("token", getAPIToken())
                 .addHeader(CONTENT_TYPE, APPLICATION_JSON)
                 .build();
 
@@ -126,7 +125,7 @@ public class MongoGradeDataBase implements GradeDataBase {
         final Request request = new Request.Builder()
                 .url(String.format("%s/grade", API_URL))
                 .method("POST", body)
-                .addHeader("api_token", getAPIToken())
+                .addHeader("token", getAPIToken())
                 // TODO: leave it blank on purpose and ask students to fix it?
                 .addHeader(CONTENT_TYPE, APPLICATION_JSON)
                 .build();
@@ -158,7 +157,7 @@ public class MongoGradeDataBase implements GradeDataBase {
         final Request request = new Request.Builder()
                 .url(String.format("%s/team", API_URL))
                 .method("POST", body)
-                .addHeader("api_token", getAPIToken())
+                .addHeader("token", getAPIToken())
                 .addHeader(CONTENT_TYPE, APPLICATION_JSON)
                 .build();
 
@@ -199,7 +198,7 @@ public class MongoGradeDataBase implements GradeDataBase {
         final Request request = new Request.Builder()
                 .url(String.format("%s/team", API_URL))
                 .method("PUT", body)
-                .addHeader("api_token", getAPIToken())
+                .addHeader("token", getAPIToken())
                 .addHeader(CONTENT_TYPE, APPLICATION_JSON)
                 .build();
 
@@ -229,7 +228,7 @@ public class MongoGradeDataBase implements GradeDataBase {
         final Request request = new Request.Builder()
                 .url(String.format("%s/leaveTeam", API_URL))
                 .method("PUT", body)
-                .addHeader("api_token", getAPIToken())
+                .addHeader("token", getAPIToken())
                 .addHeader(CONTENT_TYPE, APPLICATION_JSON)
                 .build();
 
