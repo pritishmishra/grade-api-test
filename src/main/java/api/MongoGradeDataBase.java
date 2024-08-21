@@ -44,7 +44,7 @@ public class MongoGradeDataBase implements GradeDataBase {
         final OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
         final Request request = new Request.Builder()
-                .url(String.format("%s/grade?course=%s&username=", API_URL, course, username))
+                .url(String.format("%s/grade?course=%s&username=%s", API_URL, course, username))
                 .addHeader("token", getAPIToken())
                 .addHeader(CONTENT_TYPE, APPLICATION_JSON)
                 .build();
