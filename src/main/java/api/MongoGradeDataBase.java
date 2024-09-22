@@ -124,7 +124,6 @@ public class MongoGradeDataBase implements GradeDataBase {
                 .url(String.format("%s/grade", API_URL))
                 .method("POST", body)
                 .addHeader("token", getAPIToken())
-                // TODO: leave it blank on purpose and ask students to fix it?
                 .addHeader(CONTENT_TYPE, APPLICATION_JSON)
                 .build();
 
@@ -257,37 +256,13 @@ public class MongoGradeDataBase implements GradeDataBase {
                 .addHeader(CONTENT_TYPE, APPLICATION_JSON)
                 .build();
 
-        try {
-            final Response response;
-            final JSONObject responseBody;
+        final Response response;
+        final JSONObject responseBody;
 
-            //TODO: Implement the logic to get the team information
-            //HINT: Look at the formTeam method to get an idea on how to parse the response
-            response = client.newCall(request).execute();
-            responseBody = new JSONObject(response.body().string());
+        //TODO: Implement the logic to get the team information
+        //HINT: Look at the formTeam method to get an idea on how to parse the response
 
-            if (responseBody.getInt(STATUS_CODE) == SUCCESS_CODE) {
-                final JSONObject team = responseBody.getJSONObject("team");
-                final JSONArray membersArray = team.getJSONArray("members");
-                final String[] members = new String[membersArray.length()];
-                for (int i = 0; i < membersArray.length(); i++) {
-                    members[i] = membersArray.getString(i);
-                }
 
-                return Team.builder()
-                        .name(team.getString(NAME))
-                        .members(members)
-                        .build();
-            }
-
-            // scaffold code
-            if (responseBody.getInt(STATUS_CODE) != SUCCESS_CODE) {
-                throw new RuntimeException(responseBody.getString(MESSAGE));
-            }
-        }
-        catch (IOException | JSONException event) {
-            throw new RuntimeException(event);
-        }
         return null;
     }
 }
