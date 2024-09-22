@@ -100,22 +100,27 @@ enter requests as different users.
 
 ***
 
-## Task 3: Coding a new feature
+## Task 3: Coding the Get Average Grade feature
 
 While this program has some useful core functionality which is provided by the Grade API,
 there are certain things which the Grade API can't currently do.
 
-1. As a team, brainstorm some potential additional features which this program could have.
-Aim to come up with one feature per team member.
+1. Go to `My Team` menu, enter the course name as `207` and click on `Get average grade`. You will notice that the functionality 
+for `Get Average Grade` isn't implemented yet and this throws an error. 
+2. As a team, your goal is to work together to implement this feature and confirm that it works.
+3. Follow the flow from the `getAverage` button defined in the UI layer (`app/gui/Application.java`) to reach until the 
+`GetAverageGradeUseCase` in the usecase layer.
+4. You will observe that the average calculation is already implemented in the `GetAverageGradeUseCase` class.
+5. However, the `getMyTeam()` method is left unimplemented. Follow the hints provided in this method to complete its implementation.
 
-2. For each feature, think about whether it is possible to implement, given the current functionality
-provided by the Grade API. If it isn't possible, identify what new capabilities would need to be added.
-And if it is possible, think about what the steps would need to be taken to implement the
-feature in the program.
+## Task 4: Coding the Get Top Grade feature
 
-3. You may have noticed that the functionality for `My Team -> Get Average Grade` isn't actually
-implemented yet (see the TODOs in the code). As a team, work to implement this feature and confirm
-that it works.
+In this task, you are required to build a feature that will allow the user to get the top grade of a course.
+
+1. Similar to `Get Average Grade`, you will need to implement the `Get Top Grade` feature.
+2. However, in this feature, the `Get Top Grade` usecase is already implemented in the `GetTopGradeUseCase` class.
+3. You will need to implement the UI layer for this feature by adding a button `Get Top Grade` in the `My Team` menu.
+You can draw inspiration from the `Get Average Grade` button.
 
 Note: Your team can choose how you want to work on this part, but below is our suggestions.
 
@@ -124,7 +129,11 @@ original repo on GitHub. You can do this in your repo on GitHub under `Settings 
 This will allow you to push branches to a common repo and then use pull requests to contribute
 your code and review.
 
-## Task 4 Bonus
+We recommend splitting the team into two halves with one half working on task 3 and the other on task 4. 
+You can work on separate branches and merge the code together when you are done.
+Note that successful completion of task 3 is a pre-requisite for task 4 as the `getMyTeam()` method is used in both the features. 
+
+## Task 5 Bonus
 
 If your team finishes the above task and has extra time, we encourage you to go through
 the code base in more detail and think critically about the structure of the code. What

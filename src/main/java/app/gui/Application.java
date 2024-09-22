@@ -234,7 +234,7 @@ public class Application {
         final JTextField courseField = new JTextField(20);
         // make a separate line.
         final JButton getAverageButton = new JButton("Get Average Grade");
-        //TODO: HINT Add another button for GetTopGrade
+        //TODO: Add another button for GetTopGrade (check the getAverageButton for example)
 
         final JButton leaveTeamButton = new JButton("Leave Team");
         final JLabel resultLabel = new JLabel();
@@ -252,7 +252,7 @@ public class Application {
             }
         });
 
-        // TODO: HINT Add action listener for GetTopGrade button, follow example of GetAverageButton
+        // TODO: Add action listener for GetTopGrade button, follow example of GetAverageButton
 
         leaveTeamButton.addActionListener(event -> {
             try {
