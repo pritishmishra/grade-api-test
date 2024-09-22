@@ -24,7 +24,7 @@ Next, we need to specify the username which we want to sign up with. To do this,
 4. For its value, choose whatever username you want to use. Make note of the name you choose, as you'll use it during the lab. (Don't worry, you can repeat this process with a new username if you need to later!)
 5. Press the `Send` button to make the request. You may receive an error that the request didn't go through. Scroll down and select `proxy` as the middleware and press `Send` again. You should now see the result of the request.
 6. If the username had been used before, you will see a response indicating that. Choose a new username and send the request again.
-7. When you successfully sign up an account, you will get a field called `environment_variables`, which you should copy and paste into Intellij's environment variables, for the rest of the activity.
+7. If the request is successfully sent, you will see a response that contains a `status_code` of value `200`. In this response, you will get two important fields -  `token` and `environment_variables`, whose values you will need later on in the activity.
 
 You can also refer to `apiDocuments/signUp.md` in this repo for the documentation of this API request.
 
@@ -35,8 +35,8 @@ with `USERNAME` replaced with the username you want to use.
 
 ***
 
-7. Create a new file called `username.txt` in the root directory of your project and record your
-   `token` in that file. This file is indicated in the `.gitignore` for your project, so
+7. Create a new file called `username.txt` in the root directory of your project and copy / paste the value you found
+   for the `token` field in that file. This file is indicated in the `.gitignore` for your project, so
    its name will appear yellow in IntelliJ to indicate that git will ignore the file (it won't be version
    controlled). This can be useful to ensure that you don't accidentally share private information
    (like personal api tokens) or configurations specific to your local environment when working on a
@@ -62,13 +62,13 @@ field.
       in the top left corner of the window).
       - where it says "Main class", type `app.gui.Application`.
 
-10. In that field, type the text you copied from `environment_variables` when you sign up an account. Your `token` should also be variable in `username.txt`.
+10. In that field, paste the text you copied from `environment_variables` when you sign up an account. Your `token` should also be variable in `username.txt`.
 Example: `token=6SgDAt8XpnQYTDPt4vHcPCCKJ2ppLg1C`.
 11. Click `Apply` and then `OK`.
 12. Now, rerun the program and you should see your `token` displayed.
-13. Enter a valid grade for `207` in the `Log a Grade` menu. You should see a popup
+13. Click on the `Log Grade` button and in the next screen, enter `207` as the course and a valid grade for this course. You should see a popup
 telling you that your grade was successfully entered. You can then check your grade
-by using the `Get a Grade` menu and specifying your username and `207` for the course.
+by using the `Get Grade` menu and specifying your username and `207` for the course.
 
 You are now ready to use the program! The following task will be completed with your
 team during the lab. First, make sure everyone has successfully completed the steps above.
@@ -79,12 +79,12 @@ As a team-building exercise, you will now work together to form a team using
 this application. Team members in this program are able to view the grades of other
 team members.
 
-1. Choose a team name. Make it something unique to your team, as other teams will also
+1.  Choose a team name. Make it something unique to your team, as other teams will also
 be picking team names and duplicate names aren't allowed.
 
-2. Have one member of your team form a team with the name your team chose.
+2. Click on `Form a team` button. Have one member of your team form a team with the name your team chose.
 
-3. Each other member of the team should then join the team. Make sure you see the popup
+3. Each other member of the team should then join the team using the `Join a team` menu. Make sure you see the popup
 confirming that you successfully joined the team.
 
 4. Try looking up the grade another team member entered for `207` using the `Get a Grade` menu.
