@@ -1,4 +1,4 @@
-# Lab 3: Grade API program
+# Lab 4: Grade API program
 
 **Please try to work through Tasks 0 and 1 ahead of your lab time on Monday.
 Your team and TA can help you during the lab if you had any trouble,
