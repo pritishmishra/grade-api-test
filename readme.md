@@ -26,7 +26,8 @@ Next, we need to specify the username which we want to sign up with. To do this,
 6. If the username had been used before, you will see a response indicating that. Choose a new username and send the request again.
 7. If the request is successfully sent, you will see a response that contains a `status_code` of value `200`. In this response, you will get two important fields -  `token` and `environment_variables`, whose values you will need later on in the activity.
 
-You can also refer to `apiDocuments/signUp.md` in this repo for the documentation of this API request.
+You can also refer to `https://www.postman.com/cloudy-astronaut-813156/csc207-grade-apis-demo/overview` for the documentation of all API requests related to the Grade API.
+Specifically, to learn more about the SignUp API request, refer to - `https://www.postman.com/cloudy-astronaut-813156/csc207-grade-apis-demo/request/9huifpg/1-1-sign-up-when-a-username-is-available`
 
 ***
 
@@ -135,14 +136,9 @@ Note that successful completion of task 3 is a pre-requisite for task 4 as the `
 
 ## Task 5 Bonus
 
-If your team finishes the above task and has extra time, we encourage you to go through
-the code base in more detail and think critically about the structure of the code. What
-strikes you as being good design? What feels like it could be improved or restructured to
-make the code better? How easy would it be to implement new functionality into the program?
-
-In lecture this week, we will finish our initial tour of Clean Architecture with a full
-example designed with Clean Architecture in mind. You might find it useful to revisit this
-code base after to see what parts align with Clean Architecture and which parts do not.
+If your team finishes the above task and has extra time, we encourage you think of an additional use-case that can be implemented 
+using this Grade API. Implement this use-case end-to-end, from the UI layer to the UseCase layer, and see how it works.
+This will be helpful for you when you start developing your own course project where you will also be using an API endpoint. 
 
 ## Tips
 1. Use this API `info` if you want to access all the information you can access (your team and all your teammates' grades).
